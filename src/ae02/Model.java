@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.swing.JOptionPane;
 
 public class Model {
 
@@ -18,7 +21,7 @@ public class Model {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Establecer la conexión con la base de datos
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/population", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/population", usuari, contrasenyaCifrada);
             
             // Crear un Statement para ejecutar consultas
             Statement stmt = con.createStatement();
@@ -45,8 +48,16 @@ public class Model {
             rs.close();
             pstmt.close();
             con.close();
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1045) { // Código de error para "Access denied"
+            	JOptionPane.showMessageDialog(null, "El usuario "+usuari+" o su contraseña NO es correcto", "Error de Autenticación", JOptionPane.WARNING_MESSAGE);
+//                System.out.println("Error: Acceso denegado para el usuario.");
+            } else {
+            	JOptionPane.showMessageDialog(null, "Ha ocurrido un error relacionado con la base de datos, llame a sistemas", "Error de Base de datos", JOptionPane.WARNING_MESSAGE);
+                System.out.println("SQLException: " + e.getMessage());
+            }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error general: " + e.getMessage());
         }
         return existeix;
         
