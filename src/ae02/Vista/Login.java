@@ -17,6 +17,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUsuari;
 	private JPasswordField pFcontrasenya;
+	JButton btnLogin;
 
 	/**
 	 * Create the frame.
@@ -48,7 +49,7 @@ public class Login extends JFrame {
 		lblContrasenya.setBounds(86, 170, 103, 14);
 		contentPane.add(lblContrasenya);
 		
-		JButton btnLogin = new JButton("Iniciar Sesió");
+		btnLogin = new JButton("Iniciar Sesió");
 		btnLogin.setBounds(86, 234, 287, 23);
 		contentPane.add(btnLogin);
 		
@@ -58,6 +59,30 @@ public class Login extends JFrame {
 		initComponents();
 	}
 	
+	public JTextField getTxtUsuari() {
+		return txtUsuari;
+	}
+
+	public void setTxtUsuari(JTextField txtUsuari) {
+		this.txtUsuari = txtUsuari;
+	}
+
+	public JPasswordField getpFcontrasenya() {
+		return pFcontrasenya;
+	}
+
+	public void setpFcontrasenya(JPasswordField pFcontrasenya) {
+		this.pFcontrasenya = pFcontrasenya;
+	}
+
+	public JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+	public void setBtnLogin(JButton btnLogin) {
+		this.btnLogin = btnLogin;
+	}
+
 	public void initComponents() {
 		setVisible(true);
 	}

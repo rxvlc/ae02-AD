@@ -9,7 +9,7 @@ public class Main {
 		Login login = new Login();
 		Vista vista = new Vista();
 		Model model = new Model();
-		Controlador controlador = new Controlador(vista,login, model);
+		Controlador controlador = new Controlador(login,vista, model);
 	}
 
 }
