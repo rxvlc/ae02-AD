@@ -1,0 +1,8 @@
+preguntar como poner varias vistas
+preguntar las excepciones de sql con optionpane
+
+Nombres de XML utf8 problemeta, posible filewriter del metode creaXmlPopulaiton
+
+Eixida de la concatenacio del XML a pèl i ocultacio del txt , amb mostra només quan s'inserten dades
+
+Preguntar si la sobrecarrega del metode existeix usuari esta ben feta, per a mostrar JOptionPane
