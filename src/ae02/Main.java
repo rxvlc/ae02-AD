@@ -6,9 +6,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Login login = new Login();
+		VistaLogin login = new VistaLogin();
 		Vista vista = new Vista();
-		RegistreUsuari registreUsuari = new RegistreUsuari();
+		VistaRegistre registreUsuari = new VistaRegistre();
 		Model model = new Model();
 		Controlador controlador = new Controlador(login, vista, registreUsuari, model);
 	}
