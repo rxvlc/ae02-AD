@@ -130,47 +130,103 @@ public class Vista extends JFrame {
 	 
 	// Mètodes per obtenir i establir els components de la vista
 
+	/**
+	 * Obté el botó per tancar la sessió.
+	 * 
+	 * @return El botó "Tancar Sessió"
+	 */
 	public JButton getBtnTancaSesio() {
-		return btnTancaSesio;
+	    return btnTancaSesio;
 	}
 
+	/**
+	 * Estableix el botó per tancar la sessió.
+	 * 
+	 * @param btnTancaSesio El botó "Tancar Sessió"
+	 */
 	public void setBtnTancaSesio(JButton btnTancaSesio) {
-		this.btnTancaSesio = btnTancaSesio;
+	    this.btnTancaSesio = btnTancaSesio;
 	}
 
+	/**
+	 * Obté el botó per crear un nou usuari.
+	 * 
+	 * @return El botó "Nou Usuari"
+	 */
 	public JButton getBtnNouUsuari() {
-		return btnNouUsuari;
+	    return btnNouUsuari;
 	}
 
+	/**
+	 * Obté el botó per importar un fitxer CSV.
+	 * 
+	 * @return El botó "Importar Csv"
+	 */
 	public JButton getBtnImportaCsv() {
-		return btnImportaCsv;
+	    return btnImportaCsv;
 	}
 
+	/**
+	 * Obté el text àrea per la concatenació de l'XML.
+	 * 
+	 * @return El text àrea per mostrar la concatenació de l'XML
+	 */
 	public JTextArea getTxtConcatenacioXml() {
-		return txtConcatenacioXml;
+	    return txtConcatenacioXml;
 	}
 
+	/**
+	 * Estableix el text àrea per la concatenació de l'XML.
+	 * 
+	 * @param txtConcatenacioXml El text àrea per mostrar la concatenació de l'XML
+	 */
 	public void setTxtConcatenacioXml(JTextArea txtConcatenacioXml) {
-		this.txtConcatenacioXml = txtConcatenacioXml;
+	    this.txtConcatenacioXml = txtConcatenacioXml;
 	}
 
+	/**
+	 * Obté el panell de desplaçament per la concatenació de l'XML.
+	 * 
+	 * @return El panell de desplaçament per la concatenació de l'XML
+	 */
 	public JScrollPane getScrollPaneTxtConcatenacioXml() {
-		return scrollPaneTxtConcatenacioXml;
+	    return scrollPaneTxtConcatenacioXml;
 	}
 
+	/**
+	 * Obté el text àrea per escriure la consulta SQL.
+	 * 
+	 * @return El text àrea per escriure la consulta SQL
+	 */
 	public JTextArea getTxtConsulta() {
-		return txtConsulta;
+	    return txtConsulta;
 	}
 
+	/**
+	 * Obté el botó per executar la consulta.
+	 * 
+	 * @return El botó "Executar"
+	 */
 	public JButton getBtnExecutarConsulta() {
-		return btnExecutarConsulta;
+	    return btnExecutarConsulta;
 	}
 
+	/**
+	 * Obté la taula per mostrar els resultats de la consulta.
+	 * 
+	 * @return La taula dels resultats de la consulta
+	 */
 	public JTable getTableResultatConsulta() {
-		return tableResultatConsulta;
+	    return tableResultatConsulta;
 	}
 
+	/**
+	 * Obté el botó per exportar els resultats a un fitxer CSV.
+	 * 
+	 * @return El botó "Exportar CSV"
+	 */
 	public JButton getBtnExportarCSV() {
-		return btnExportarCSV;
+	    return btnExportarCSV;
 	}
+
 }

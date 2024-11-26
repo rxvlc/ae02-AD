@@ -514,8 +514,6 @@ public class Model {
 				if (country != null) {
 					// Llamar a registraCountry() para registrar el país
 					registraCountry(country);
-					JOptionPane.showMessageDialog(null, "País procesado correctamente: " + country.getCountry(),
-							"Éxito", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					// Si hubo un problema al procesar el archivo XML
 					JOptionPane.showMessageDialog(null, "Error al procesar el archivo XML: " + xmlFile.getName(),
@@ -551,10 +549,6 @@ public class Model {
 			if (xmlFiles != null) {
 				for (String fileName : xmlFiles) {
 					File xmlFile = new File(directory, fileName);
-					// Mostrar un missatge informatiu sobre l'arxiu que s'està processant
-					JOptionPane.showMessageDialog(null, "Processant arxiu: " + xmlFile.getName(), "Processant XML",
-							JOptionPane.INFORMATION_MESSAGE);
-
 					// Llegir el contingut de l'arxiu XML
 					try (BufferedReader reader = new BufferedReader(new FileReader(xmlFile))) {
 						String line;
@@ -671,6 +665,10 @@ public class Model {
 
 		// Finalment, inserim les dades generades als arxius XML a la base de dades
 		insertaDadesXmlCreats();
+		
+
+		JOptionPane.showMessageDialog(null, "Paises procesados correctamente",
+				"Éxito", JOptionPane.INFORMATION_MESSAGE);
 
 		// Retornem true per indicar que el procés ha finalitzat correctament
 		return true;
