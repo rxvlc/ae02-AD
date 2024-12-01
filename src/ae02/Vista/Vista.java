@@ -30,18 +30,78 @@ import javax.swing.ListSelectionModel;
  */
 public class Vista extends JFrame {
 
+	/**
+	 * Identificador de versió per a la serialització de la classe.
+	 * Necessari per a assegurar la compatibilitat entre diferents versions de la classe.
+	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Panell principal que conté tots els components de la finestra.
+	 * Serveix com a contenidor principal per a la interfície gràfica d'usuari.
+	 */
 	private JPanel contentPane;
+
+	/**
+	 * Botó per a tancar la sessió de l'usuari.
+	 * Al prémer-lo, l'usuari es desconnecta del sistema i torna a la pantalla d'inici.
+	 */
 	JButton btnTancaSesio;
+
+	/**
+	 * Botó per a crear un nou usuari.
+	 * Al prémer-lo, es mostra una interfície per a registrar nous usuaris al sistema.
+	 */
 	JButton btnNouUsuari;
+
+	/**
+	 * Botó per a importar un arxiu CSV.
+	 * Permet carregar dades des d'un fitxer CSV al sistema.
+	 */
 	JButton btnImportaCsv;
+
+	/**
+	 * Àrea de text on es mostra la concatenació d'arxius XML processats.
+	 * Visible després de carregar un fitxer CSV o realitzar una operació relacionada.
+	 */
 	JTextArea txtConcatenacioXml;
+
+	/**
+	 * Panell amb barra de desplaçament que conté l'àrea de text de concatenació d'XML.
+	 * Facilita la visualització de grans quantitats de dades concatenades.
+	 */
 	private JScrollPane scrollPaneTxtConcatenacioXml;
+
+	/**
+	 * Àrea de text on es pot escriure una consulta personalitzada.
+	 * L'usuari pot introduir consultes per a interactuar amb la base de dades.
+	 */
 	private JTextArea txtConsulta;
+
+	/**
+	 * Botó per a executar una consulta.
+	 * Al prémer-lo, la consulta escrita a l'àrea de text s'envia per a ser processada.
+	 */
 	private JButton btnExecutarConsulta;
+
+	/**
+	 * Taula que mostra els resultats de la consulta realitzada.
+	 * Conté les dades retornades després d'executar una consulta SQL.
+	 */
 	private JTable tableResultatConsulta;
+
+	/**
+	 * Panell amb barra de desplaçament que conté la taula de resultats.
+	 * Millora la navegació i visualització de grans conjunts de dades.
+	 */
 	private JScrollPane scrollPane;
+
+	/**
+	 * Botó per a exportar els resultats de la consulta a un fitxer CSV.
+	 * Permet guardar les dades consultades en un fitxer per al seu ús extern.
+	 */
 	JButton btnExportarCSV;
+
 
 	/**
 	 * Constructor de la classe Vista.
@@ -105,6 +165,7 @@ public class Vista extends JFrame {
 
 		// Crear i afegir el camp de text per a la consulta SQL
 		txtConsulta = new JTextArea();
+		txtConsulta.setLineWrap(true);
 		txtConsulta.setBounds(10, 40, 850, 260);
 		contentPane.add(txtConsulta);
 

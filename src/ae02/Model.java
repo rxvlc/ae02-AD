@@ -47,53 +47,51 @@ public class Model {
 	 * @return torna true o false depenent si existeix
 	 */
 	boolean existeixUsuari(String usuari, String contrasenya) {
-		String contrasenyaCifrada = Util.cifraContrasenya(contrasenya);
-		boolean existeix = false; // Indica si el usuario existe en la base de datos
-		Dades.admin = false; // Indica si el usuario tiene permisos de administrador
+	    String contrasenyaCifrada = Util.cifraContrasenya(contrasenya);
+	    boolean existeix = false; // Indica si l'usuari existeix en la base de dades
 
-		try {
-			// Cargar el driver de MySQL
-			Class.forName("com.mysql.cj.jdbc.Driver");
+	    try {
+	        // Carregar el driver de MySQL
+	        Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// Establecer la conexión con la base de datos utilizando las credenciales del
-			// usuario
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/population", usuari,
-					contrasenyaCifrada);
-			Conexio.setConexio(con);
-			existeix = true; // Si la conexión se establece, el usuario existe
+	        // Establir la connexió amb la base de dades utilitzant les credencials de l'usuari
+	        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/population", usuari,
+	                contrasenyaCifrada);
+	        Conexio.setConexio(con);
+	        existeix = true; // Si la connexió s'establix, l'usuari existeix
 
-			try {
-				// Intentar acceder a la tabla `users`
-				String query = "SELECT * FROM users LIMIT 1";
-				Statement stmt = Conexio.getConexio().createStatement();
-				ResultSet rs = stmt.executeQuery(query);
-				if (rs.next()) {
-					// Si la consulta tiene éxito, el usuario tiene permisos
-					Dades.admin = true;
-				}
-				rs.close();
-				stmt.close();
-			} catch (SQLException e) {
-				// Si la consulta falla, no tiene permisos para la tabla `users`
-				System.out.println("El usuario no tiene permisos para acceder a la tabla `users`.");
-			}
+	        try {
+	            // Intentar accedir a la taula `users`
+	            String query = "SELECT * FROM users LIMIT 1";
+	            Statement stmt = Conexio.getConexio().createStatement();
+	            ResultSet rs = stmt.executeQuery(query);
+	            if (rs.next()) {
+	                // Si la consulta té èxit, l'usuari té permisos
+	                Dades.admin = true;
+	            }
+	            rs.close();
+	            stmt.close();
+	        } catch (SQLException e) {
+	            // Si la consulta falla, no té permisos per a la taula `users`
+	            System.out.println("L'usuari no té permisos per accedir a la taula `users`.");
+	        }
 
-		} catch (SQLException e) {
-			// Manejo de errores relacionados con la base de datos
-			if (e.getErrorCode() == 1045) { // Error "Access denied"
-				JOptionPane.showMessageDialog(null, "El usuario " + usuari + " o su contraseña NO es correcto",
-						"Error de Autenticación", JOptionPane.WARNING_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(null,
-						"Ha ocurrido un error relacionado con la base de datos, llame a sistemas",
-						"Error de Base de datos", JOptionPane.WARNING_MESSAGE);
-			}
-			existeix = false;
-		} catch (Exception e) {
-			System.out.println("Error general: " + e.getMessage());
-		}
+	    } catch (SQLException e) {
+	        // Maneig d'errors relacionats amb la base de dades
+	        if (e.getErrorCode() == 1045) { // Error "Access denied"
+	            JOptionPane.showMessageDialog(null, "L'usuari " + usuari + " o la seua contrasenya NO és correcte",
+	                    "Error d'Autenticació", JOptionPane.WARNING_MESSAGE);
+	        } else {
+	            JOptionPane.showMessageDialog(null,
+	                    "Ha ocorregut un error relacionat amb la base de dades, cride al departament de sistemes",
+	                    "Error de Base de dades", JOptionPane.WARNING_MESSAGE);
+	        }
+	        existeix = false;
+	    } catch (Exception e) {
+	        System.out.println("Error general: " + e.getMessage());
+	    }
 
-		return existeix; // Retorna true si el usuari existeix, false en cas contrari
+	    return existeix; // Retorna true si l'usuari existeix, false en cas contrari
 	}
 
 	/**
@@ -171,7 +169,6 @@ public class Model {
 				PreparedStatement stmtCrearUsuari = Conexio.getConexio().prepareStatement(consultaCrearUsuari);
 				stmtCrearUsuari.setString(1, usuari);
 				stmtCrearUsuari.setString(2, contrasenyaCifrada);
-				System.out.println(contrasenyaCifrada);
 				stmtCrearUsuari.executeUpdate();
 				stmtCrearUsuari.close();
 
@@ -481,53 +478,53 @@ public class Model {
 	}
 
 	/**
-	 * Inserta datos de los archivos XML creados en el directorio ./xml/. Este
-	 * método busca los archivos XML dentro de dicho directorio, los convierte en
-	 * objetos `Country`, y registra cada uno de esos objetos llamando al método
-	 * `registraCountry()`.
+	 * Inserix dades dels fitxers XML creats en el directori ./xml/. Este mètode
+	 * busca els fitxers XML dins d'eixe directori, els convertix en objectes `Country`,
+	 * i registra cadascun d'estos objectes cridant al mètode `registraCountry()`.
 	 *
-	 * @return `true` si se procesaron archivos XML correctamente, o `false` si hubo
-	 *         algún error o no se encontraron archivos XML.
+	 * @return `true` si es van processar fitxers XML correctament, o `false` si hi va haver
+	 *         algun error o no es van trobar fitxers XML.
 	 */
 	boolean insertaDadesXmlCreats() {
-		File directory = new File("./xml/");
+	    File directori = new File("./xml/");
 
-		// Verificar si el directorio existe
-		if (!directory.exists() || !directory.isDirectory()) {
-			JOptionPane.showMessageDialog(null, "El directorio ./xml/ no existe o no es un directorio.",
-					"Error de Directorio", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
+	    // Verificar si el directori existix
+	    if (!directori.exists() || !directori.isDirectory()) {
+	        JOptionPane.showMessageDialog(null, "El directori ./xml/ no existix o no és un directori.",
+	                "Error de Directori", JOptionPane.ERROR_MESSAGE);
+	        return false;
+	    }
 
-		// Filtrar solo archivos XML en el directorio
-		String[] xmlFiles = directory.list((dir, name) -> name.toLowerCase().endsWith(".xml"));
+	    // Filtrar només fitxers XML en el directori
+	    String[] fitxersXml = directori.list((dir, name) -> name.toLowerCase().endsWith(".xml"));
 
-		// Recorrer cada archivo XML
-		if (xmlFiles != null) {
-			for (String fileName : xmlFiles) {
-				File xmlFile = new File(directory, fileName);
+	    // Recórrer cada fitxer XML
+	    if (fitxersXml != null) {
+	        for (String nomFitxer : fitxersXml) {
+	            File fitxerXml = new File(directori, nomFitxer);
 
-				// Convertir el archivo XML a un objeto Country
-				Country country = xmlACountry(xmlFile);
+	            // Convertir el fitxer XML a un objecte Country
+	            Country country = xmlACountry(fitxerXml);
 
-				// Verificar si el objeto Country se creó correctamente
-				if (country != null) {
-					// Llamar a registraCountry() para registrar el país
-					registraCountry(country);
-				} else {
-					// Si hubo un problema al procesar el archivo XML
-					JOptionPane.showMessageDialog(null, "Error al procesar el archivo XML: " + xmlFile.getName(),
-							"Error al Procesar", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-			return true;
-		} else {
-			// Si no se encontraron archivos XML en el directorio
-			JOptionPane.showMessageDialog(null, "No se encontraron archivos XML en el directorio ./xml/",
-					"Archivos No Encontrados", JOptionPane.WARNING_MESSAGE);
-			return false;
-		}
+	            // Verificar si l'objecte Country es va crear correctament
+	            if (country != null) {
+	                // Cridar a registraCountry() per registrar el país
+	                registraCountry(country);
+	            } else {
+	                // Si hi va haver un problema en processar el fitxer XML
+	                JOptionPane.showMessageDialog(null, "Error en processar el fitxer XML: " + fitxerXml.getName(),
+	                        "Error en Processar", JOptionPane.ERROR_MESSAGE);
+	            }
+	        }
+	        return true;
+	    } else {
+	        // Si no es van trobar fitxers XML en el directori
+	        JOptionPane.showMessageDialog(null, "No s'han trobat fitxers XML en el directori ./xml/",
+	                "Fitxers No Trobats", JOptionPane.WARNING_MESSAGE);
+	        return false;
+	    }
 	}
+
 
 	/**
 	 * Lliga i concatena el contingut de tots els arxius XML al directori ./xml/.

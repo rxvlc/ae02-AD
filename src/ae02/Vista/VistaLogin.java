@@ -19,11 +19,38 @@ import java.awt.Color;
  */
 public class VistaLogin extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;  // Panell principal que conté tots els components de la finestra.
-    private JTextField txtUsuari;  // Camp de text per introduir el nom d'usuari.
-    private JPasswordField pFcontrasenya;  // Camp de contrasenya per introduir la clau d'accés.
-    JButton btnLogin;  // Botó per iniciar sessió.
+	/** 
+	 * Identificador de versió per a la serialització de la classe.
+	 * És necessari per garantir la compatibilitat entre diferents versions 
+	 * de la classe durant el procés de serialització.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** 
+	 * Panell principal que conté tots els components de la finestra.
+	 * Actua com a contenidor principal de la interfície gràfica.
+	 */
+	private JPanel contentPane;
+
+	/** 
+	 * Camp de text per introduir el nom d'usuari. 
+	 * S'utilitza per escriure l'identificador de l'usuari que vol accedir.
+	 */
+	private JTextField txtUsuari;
+
+	/** 
+	 * Camp de contrasenya per introduir la clau d'accés. 
+	 * Amaga els caràcters introduïts per garantir la confidencialitat.
+	 */
+	private JPasswordField pFcontrasenya;
+
+	/** 
+	 * Botó per iniciar sessió. 
+	 * La seua acció està vinculada a la verificació de les credencials 
+	 * introduïdes i l'accés al sistema si són correctes.
+	 */
+	JButton btnLogin;
+
 
     /**
      * Constructor que crea la interfície de la finestra d'inici de sessió.
